@@ -209,7 +209,7 @@ module Rubykiq
     private
 
     def initialize_connection_pool(options = {})
-      Thread.exclusive do
+      Mutex.new.synchronize do
         @connection_pool = ::ConnectionPool.new(timeout: redis_pool_timeout, size: redis_pool_size) do
           Rubykiq::Connection.new(options)
         end

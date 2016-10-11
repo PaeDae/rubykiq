@@ -25,7 +25,7 @@ module Rubykiq
   private
 
   def self.initialize_client(options = {})
-    Thread.exclusive do
+    Mutex.new.synchronize do
       @client = Rubykiq::Client.new(options)
     end
   end
