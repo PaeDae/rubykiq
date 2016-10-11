@@ -15,6 +15,8 @@ module Rubykiq
       :sentinels,
       :role,
       :master_name,
+      :failover_reconnect_timeout,
+      :reconnect_attempts,
       :driver,
       :retry,
       :queue
@@ -29,6 +31,8 @@ module Rubykiq
       sentinels: [],
       role: :master,
       master_name: nil,
+      failover_reconnect_timeout: nil,
+      reconnect_attempts: 1,
       driver: :ruby,
       retry: true,
       queue: 'default'
